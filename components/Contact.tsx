@@ -27,41 +27,21 @@ export default function Contact() {
     setIsSubmitting(true)
     
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://formspree.io/f/your-form-id', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message
-        }),
+        body: JSON.stringify(formData)
       })
 
       if (!response.ok) {
-        const errorText = await response.text()
-        let errorMessage = 'Failed to send message'
-        try {
-          const errorData = JSON.parse(errorText)
-          errorMessage = errorData.error || errorMessage
-        } catch (e) {
-          console.error('Error parsing response:', errorText)
-        }
-        throw new Error(errorMessage)
-      }
-
-      let data
-      try {
-        data = await response.json()
-      } catch (e) {
-        console.error('Error parsing success response:', e)
-        // Continue even if json parsing fails
+        throw new Error('Failed to send message')
       }
 
       toast({
         title: "Success!",
-        description: data?.message || "Your message has been sent successfully.",
+        description: "Your message has been sent successfully.",
       })
       
       // Reset form
@@ -71,11 +51,10 @@ export default function Contact() {
         message: ''
       })
     } catch (error) {
-      console.error('Submission error:', error)
       toast({
         variant: "destructive",
         title: "Error",
-        description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
+        description: "Failed to send message. Please try again.",
       })
     } finally {
       setIsSubmitting(false)

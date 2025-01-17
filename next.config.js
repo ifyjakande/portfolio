@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'export',
   images: {
-    unoptimized: true, // Required for Cloudflare Pages
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -10,6 +10,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    serverActions: false,
+  }
 }
 
 module.exports = nextConfig 
