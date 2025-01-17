@@ -1,9 +1,15 @@
-import '@/app/globals.css'
-import { Inter } from 'next/font/google'
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description: "My portfolio website",
+}
 
 export default function RootLayout({
   children,
@@ -12,13 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem={true}
+          defaultTheme="system"
+          enableSystem
           disableTransitionOnChange
-          suppressHydrationWarning
         >
           {children}
           <Toaster />
@@ -26,10 +31,5 @@ export default function RootLayout({
       </body>
     </html>
   )
-}
-
-export const metadata = {
-  title: 'Ife Akande - Data Engineer & ML Solutions Architect',
-  description: 'Portfolio website showcasing my work in Data Engineering and Machine Learning Solutions Architecture',
 }
 
