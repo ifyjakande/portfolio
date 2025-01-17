@@ -1,11 +1,7 @@
 "use client"
 
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+import { useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
-import { Loader2 } from "lucide-react"
 
 interface FormData {
   name: string
@@ -15,40 +11,44 @@ interface FormData {
 
 export default function Contact() {
   const { toast } = useToast()
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    message: ''
-  })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+  })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+
     try {
-      const response = await fetch('https://formspree.io/f/your-form-id', {
-        method: 'POST',
+      const response = await fetch("https://formspree.io/f/xlddkvzo", { // Updated with your form ID
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       })
 
       if (!response.ok) {
-        throw new Error('Failed to send message')
+        throw new Error("Failed to send message")
       }
 
       toast({
         title: "Success!",
-        description: "Your message has been sent successfully.",
+        description: "Message sent successfully!",
       })
-      
+
       // Reset form
       setFormData({
-        name: '',
-        email: '',
-        message: ''
+        name: "",
+        email: "",
+        message: "",
       })
     } catch (error) {
       toast({
@@ -62,75 +62,72 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 bg-muted/50">
-      <div className="max-w-2xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-4 text-center">Get In Touch</h2>
-        <p className="text-muted-foreground mb-8 text-center">
-          Have a question or want to work together? Feel free to reach out!
-        </p>
-        
-        <form onSubmit={handleSubmit} className="space-y-6">
+    <section className="w-full py-12 md:py-24 lg:py-32">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <label htmlFor="name" className="text-sm font-medium">
-              Name
-            </label>
-            <Input
-              id="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-              required
-              disabled={isSubmitting}
-              className="bg-background"
-            />
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+              Get In Touch
+            </h2>
+            <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+              Have a question or want to work together? Feel free to reach out!
+            </p>
           </div>
-          
-          <div className="space-y-2">
-            <label htmlFor="email" className="text-sm font-medium">
-              Email
-            </label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="your.email@example.com"
-              value={formData.email}
-              onChange={(e) => setFormData({...formData, email: e.target.value})}
-              required
-              disabled={isSubmitting}
-              className="bg-background"
-            />
+          <div className="w-full max-w-sm space-y-4">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <div className="space-y-2">
+                <label htmlFor="name">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  className="w-full p-2 border rounded bg-background"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  placeholder="Your email"
+                  required
+                  type="email"
+                  className="w-full p-2 border rounded bg-background"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Your message"
+                  required
+                  className="w-full p-2 border rounded bg-background min-h-[100px]"
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 px-4 py-2 rounded"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </button>
+            </form>
           </div>
-          
-          <div className="space-y-2">
-            <label htmlFor="message" className="text-sm font-medium">
-              Message
-            </label>
-            <Textarea
-              id="message"
-              placeholder="Your message..."
-              value={formData.message}
-              onChange={(e) => setFormData({...formData, message: e.target.value})}
-              required
-              disabled={isSubmitting}
-              className="min-h-[150px] bg-background"
-            />
-          </div>
-          
-          <Button 
-            type="submit" 
-            disabled={isSubmitting}
-            className="w-full"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Sending...
-              </>
-            ) : (
-              'Send Message'
-            )}
-          </Button>
-        </form>
+        </div>
       </div>
     </section>
   )
