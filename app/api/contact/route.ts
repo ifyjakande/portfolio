@@ -5,27 +5,33 @@ export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json()
 
-    // Create a transporter using your email service credentials
+    // Validate environment variables
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      throw new Error('Email configuration is missing')
+    }
+
+    // Create transporter with more detailed configuration
     const transporter = nodemailer.createTransport({
-      service: 'gmail', // or your preferred service
+      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // Use TLS
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        pass: process.env.EMAIL_PASS, // This should be an App Password
       },
     })
 
-    // Email content
+    // Verify transporter configuration
+    await transporter.verify()
+
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: 'akandeifeoluwa@gmail.com', // Your email address
-      subject: `New Contact Form Submission from ${name}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        Message: ${message}
-      `,
+      from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
+      subject: `New Contact Form Message from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`, // Plain text version
       html: `
-        <h3>New Contact Form Submission</h3>
+        <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong> ${message}</p>
@@ -33,7 +39,8 @@ export async function POST(req: Request) {
     }
 
     // Send email
-    await transporter.sendMail(mailOptions)
+    const info = await transporter.sendMail(mailOptions)
+    console.log('Message sent: %s', info.messageId)
 
     return NextResponse.json(
       { message: 'Email sent successfully' },
@@ -42,7 +49,10 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error('Failed to send email:', error)
     return NextResponse.json(
-      { error: 'Failed to send email' },
+      { 
+        error: error instanceof Error ? error.message : 'Failed to send email',
+        details: process.env.NODE_ENV === 'development' ? error : undefined
+      },
       { status: 500 }
     )
   }

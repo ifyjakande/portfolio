@@ -35,21 +35,28 @@ export default function Contact() {
         body: JSON.stringify(formData),
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error('Failed to send message')
+        throw new Error(data.error || 'Failed to send message')
       }
 
       toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: "Success!",
+        description: "Your message has been sent successfully.",
       })
-
-      setFormData({ name: '', email: '', message: '' })
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      })
     } catch (error) {
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
       })
     } finally {
       setIsSubmitting(false)
