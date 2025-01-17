@@ -32,18 +32,36 @@ export default function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        }),
       })
 
-      const data = await response.json()
-
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message')
+        const errorText = await response.text()
+        let errorMessage = 'Failed to send message'
+        try {
+          const errorData = JSON.parse(errorText)
+          errorMessage = errorData.error || errorMessage
+        } catch (e) {
+          console.error('Error parsing response:', errorText)
+        }
+        throw new Error(errorMessage)
+      }
+
+      let data
+      try {
+        data = await response.json()
+      } catch (e) {
+        console.error('Error parsing success response:', e)
+        // Continue even if json parsing fails
       }
 
       toast({
         title: "Success!",
-        description: "Your message has been sent successfully.",
+        description: data?.message || "Your message has been sent successfully.",
       })
       
       // Reset form
@@ -53,6 +71,7 @@ export default function Contact() {
         message: ''
       })
     } catch (error) {
+      console.error('Submission error:', error)
       toast({
         variant: "destructive",
         title: "Error",
