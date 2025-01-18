@@ -13,17 +13,17 @@ const educationData: Education[] = [
   {
     degree: "MBA",
     institution: "Obafemi Awolowo University",
-    year: "2020 - 2022"
+    year: "2019"
   },
   {
     degree: "B.Sc. Computer Science with Economics",
     institution: "Obafemi Awolowo University",
-    year: "2014 - 2019"
+    year: "2014"
   },
   {
     degree: "Data Science Nigeria Bootcamp",
     institution: "Data Science Nigeria",
-    year: "2019"
+    year: "2020"
   }
 ]
 
