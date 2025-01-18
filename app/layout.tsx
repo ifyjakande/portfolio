@@ -4,6 +4,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import StructuredData from './components/StructuredData'
+import Analytics from './components/Analytics'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -14,7 +15,34 @@ export const metadata: Metadata = {
   verification: {
     google: 'FEfqHwI9M4eIOEj-uW4VTk9oeR7JP1BRQrO1yd9fA8s',
   },
-  keywords: ['Data Engineer', 'Machine Learning', 'ML Solutions Architect', 'AWS', 'Python', 'Data Engineering'],
+  keywords: [
+    'Data Engineer',
+    'Machine Learning',
+    'ML Solutions Architect',
+    'AWS',
+    'Big Query',
+    'Azure',
+    'Databricks',
+    'Python',
+    'PySpark',
+    'Data Engineering',
+    'Big Data',
+    'Data Pipeline',
+    'ETL',
+    'Data Warehouse',
+    'Data Analytics',
+    'AI/ML',
+    'Database Design',
+    'Data Modeling',
+    'SQL',
+    'NoSQL',
+    'Serverless',
+    'Data Infrastructure',
+    'Data Science',
+    'Data Strategy',
+    'Business Intelligence',
+    'Data Visualization'
+  ],
   authors: [{ name: 'Ife Akande' }],
   creator: 'Ife Akande',
   openGraph: {
@@ -60,6 +88,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <StructuredData />
+        <Analytics />
       </head>
       <body className={inter.className}>
         <ThemeProvider
