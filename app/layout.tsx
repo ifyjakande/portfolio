@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://ifeakande.com'),
   verification: {
     google: 'FEfqHwI9M4eIOEj-uW4VTk9oeR7JP1BRQrO1yd9fA8s',
+    yandex: '6819097b98bddce0',
   },
   keywords: [
     'Data Engineer',
