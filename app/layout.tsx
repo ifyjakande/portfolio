@@ -87,6 +87,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link
+          rel="preload"
+          href="/profile.jpg"
+          as="image"
+        />
         <StructuredData />
         <Analytics />
       </head>

@@ -9,6 +9,8 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60,
   },
   experimental: {
     serverActions: false,
@@ -25,7 +27,8 @@ const nextConfig = {
         ]
       }
     ]
-  }
+  },
+  optimizeFonts: true,
 }
 
 module.exports = nextConfig 
