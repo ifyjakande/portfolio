@@ -8,6 +8,8 @@ export default function ProfileImage() {
       width={320}
       height={320}
       priority
+      quality={75}
+      loading="eager"
       className="rounded-full"
     />
   )
