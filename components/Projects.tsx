@@ -28,6 +28,17 @@ const projects: Project[] = [
     githubUrl: "https://github.com/ifyjakande/crime_dwelling_pipeline"
   },
   {
+    title: "DBT Transformation Pipeline",
+    description: "Advanced analytics solution for Northern Ireland crime statistics",
+    achievements: [
+      "Implemented DBT models for complex data transformations",
+      "Created district-level analytics dashboards",
+      "Reduced query processing time by 60%"
+    ],
+    technologies: ["DBT", "SQL", "Python", "Analytics"],
+    githubUrl: "https://github.com/ifyjakande/northern-ireland-etl"
+  },
+  {
     title: "Azure Synapse, Airflow, Kafka & Streamlit Sales Analytics Platform",
     description: "End-to-end retail sales data pipeline and analytics dashboard",
     achievements: [
@@ -51,37 +62,16 @@ const projects: Project[] = [
     githubUrl: "https://github.com/ifyjakande/crypto_alert"
   },
   {
-    title: "DBT Transformation Pipeline",
-    description: "Advanced analytics solution for Northern Ireland crime statistics",
+    title: "FinFlow Analytics - BigQuery & dbt Pipeline",
+    description: "Modern financial data warehouse solution implementing dimensional modeling with GCP",
     achievements: [
-      "Implemented DBT models for complex data transformations",
-      "Created district-level analytics dashboards",
-      "Reduced query processing time by 60%"
+      "Orchestrated end-to-end pipeline using Apache Airflow, GCP, and dbt",
+      "Implemented robust dimensional data model optimized for analytical queries",
+      "Automated data quality checks and validations across pipeline stages",
+      "Designed scalable architecture handling customer, account, and transaction analytics"
     ],
-    technologies: ["DBT", "SQL", "Python", "Analytics"],
-    githubUrl: "https://github.com/ifyjakande/northern-ireland-etl"
-  },
-  {
-    title: "AWS & Airflow Pipeline",
-    description: "Automated Reddit data collection and processing system",
-    achievements: [
-      "Integrated Reddit API with AWS services",
-      "Implemented S3 data lake architecture",
-      "Processes millions of records with robust error handling"
-    ],
-    technologies: ["AWS", "Airflow", "Python", "Reddit API", "S3"],
-    githubUrl: "https://github.com/ifyjakande/reddit_project"
-  },
-  {
-    title: "AWS Redshift & DBT Warehouse",
-    description: "End-to-end data warehouse implementation",
-    achievements: [
-      "Designed optimized star schema architecture",
-      "Built automated data quality frameworks",
-      "Reduced compute costs by 40% through incremental processing"
-    ],
-    technologies: ["AWS", "Redshift", "DBT", "Python", "SQL"],
-    githubUrl: "https://github.com/ifyjakande/redshift_datawarehouse_project"
+    technologies: ["GCP", "BigQuery", "DBT", "Airflow", "Python", "SQL"],
+    githubUrl: "https://github.com/ifyjakande/finflow-project"
   }
 ]
 

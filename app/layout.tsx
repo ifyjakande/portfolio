@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import StructuredData from './components/StructuredData'
 import Analytics from './components/Analytics'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -110,6 +111,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          <GoogleAnalytics gaId="G-10162882550" />
         </ThemeProvider>
       </body>
     </html>
