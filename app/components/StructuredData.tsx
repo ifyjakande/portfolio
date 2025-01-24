@@ -6,8 +6,8 @@ export default function StructuredData() {
     "url": "https://ifeakande.com",
     "image": "https://ifeakande.com/profile.jpg",
     "sameAs": [
-      "https://linkedin.com/in/akande-ifeoluwa", // Add your actual LinkedIn URL
-      "https://github.com/ifyjakande",      // Add your actual GitHub URL
+      "https://linkedin.com/in/akande-ifeoluwa", 
+      "https://github.com/ifyjakande",      
     ],
     "jobTitle": "Data Engineer & ML Solutions Architect",
     "description": "Data Engineer and Machine Learning Solutions Architect specializing in building scalable data solutions and ML systems",
