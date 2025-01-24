@@ -72,6 +72,17 @@ const projects: Project[] = [
     ],
     technologies: ["GCP", "BigQuery", "DBT", "Airflow", "Python", "SQL"],
     githubUrl: "https://github.com/ifyjakande/finflow-project"
+  },
+  {
+    title: "Agricultural Data Pipeline with AWS S3, Databricks & MongoDB",
+    description: "End-to-end pipeline for agricultural yield analytics and recommendations",
+    achievements: [
+      "Engineered data pipeline using AWS S3, Databricks, and MongoDB Atlas",
+      "Implemented automated ETL processing with PySpark for yield trends analysis",
+      "Integrated MongoDB for intelligent recommendation storage and retrieval"
+    ],
+    technologies: ["AWS S3", "Databricks", "MongoDB", "PySpark", "Python"],
+    githubUrl: "https://github.com/ifyjakande/reco-system"
   }
 ]
 
