@@ -17,7 +17,20 @@ export default function Hero() {
               Building scalable data pipelines and ML solutions with measurable business impact. 
               5+ years of experience in data engineering and machine learning.
             </p>
-            <Button asChild size="lg" className="animate-slide-up delay-300">
+            <Button 
+              asChild 
+              size="lg" 
+              onClick={() => {
+                // Track the download event in GA4
+                if (typeof window !== 'undefined' && (window as any).gtag) {
+                  (window as any).gtag('event', 'file_download', {
+                    event_category: 'Resume',
+                    event_label: 'Resume Download'
+                  });
+                }
+              }}
+              className="animate-slide-up delay-300"
+            >
               <a href="/ifeoluwa_resume.pdf" download className="flex items-center gap-2">
                 <FileDown className="h-4 w-4" />
                 Download Resume
