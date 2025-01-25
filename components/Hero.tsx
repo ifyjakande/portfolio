@@ -23,7 +23,7 @@ export default function Hero() {
               onClick={() => {
                 // Track the download event in GA4
                 if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'file_download', {
+                  (window as any).gtag('event', 'resume_download', {
                     event_category: 'Resume',
                     event_label: 'Resume Download'
                   });
