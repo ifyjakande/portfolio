@@ -19,19 +19,9 @@ export default function Hero() {
             </p>
             <Button 
               asChild 
-              size="lg" 
-              onClick={() => {
-                // Track the download event in GA4
-                if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'resume_download', {
-                    event_category: 'Resume',
-                    event_label: 'Resume Download'
-                  });
-                }
-              }}
-              className="animate-slide-up delay-300"
+              size="lg"
             >
-              <a href="/ifeoluwa_resume.pdf" download className="flex items-center gap-2">
+              <a href="/ifeoluwa_resume.pdf" download>
                 <FileDown className="h-4 w-4" />
                 Download Resume
               </a>
