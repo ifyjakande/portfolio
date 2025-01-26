@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
+# Specify the sitemap location
 Sitemap: https://ifeakande.com/sitemap.xml 

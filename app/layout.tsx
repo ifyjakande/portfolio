@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'Ife Akande - Data Engineer & ML Solutions Architect',
   description: 'Ife Akande is a Data Engineer and Machine Learning Solutions Architect specializing in building scalable data solutions and ML systems.',
   metadataBase: new URL('https://ifeakande.com'),
+  alternates: {
+    canonical: '/',
+  },
   verification: {
     google: 'FEfqHwI9M4eIOEj-uW4VTk9oeR7JP1BRQrO1yd9fA8s',
   },
