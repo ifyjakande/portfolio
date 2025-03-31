@@ -17,6 +17,17 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "Media Analytics Data Lake on AWS",
+    description: "Serverless data lake for streaming media analytics",
+    achievements: [
+      "Built with AWS S3, Glue, Step Functions, EventBridge, and SNS",
+      "Automated ETL pipeline with KMS encryption for data security",
+      "End-to-end infrastructure as code using Terraform"
+    ],
+    technologies: ["AWS", "Terraform", "S3", "Glue", "Step Functions", "EventBridge", "SNS"],
+    githubUrl: "https://github.com/ifyjakande/aws-media-analytics-data-lake"
+  },
+  {
     title: "AWS Redshift & Airflow ETL Pipeline",
     description: "Modern data pipeline for Northern Ireland crime and housing analytics",
     achievements: [
