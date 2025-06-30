@@ -8,7 +8,7 @@ export default function Skills() {
     },
     {
       name: "Airflow",
-      icon: "https://raw.githubusercontent.com/apache/airflow/main/docs/apache-airflow/img/logos/airflow_white_bg.png"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-original.svg"
     },
     {
       name: "Snowflake",
@@ -55,7 +55,7 @@ export default function Skills() {
     },
     {
       name: "Django",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/django/django-plain.svg"
+      icon: "https://www.vectorlogo.zone/logos/djangoproject/djangoproject-icon.svg"
     },
     {
       name: "Docker",
